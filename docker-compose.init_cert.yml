@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+    wsrv:
+        volumes:
+            - ./nginx-conf:/etc/nginx/conf.d
