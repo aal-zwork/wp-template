@@ -2,7 +2,7 @@
 cur_pwd=$(pwd)
 cur_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/.."
 
-dockerdir=${2:-$dir}
+dockerdir=${2:-$cur_dir}
 # set compose name
 cd $dockerdir
 . .env >/dev/null 2>&1
