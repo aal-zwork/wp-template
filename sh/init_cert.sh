@@ -30,7 +30,7 @@ docker-compose -f docker-compose.yml -f docker-compose.init_cert.yml up -d
 docker-compose run cbot certonly $dry_run --webroot -w /var/lib/letsencrypt --email $CERT_EMAIL --agree-tos --no-eff-email --staging -d ${dns_for_certbot}
 docker-compose run cbot certonly $dry_run --webroot -w /var/lib/letsencrypt --email $CERT_EMAIL --agree-tos --no-eff-email --force-renewal -d ${dns_for_certbot}
 
-docker run --rm -v $(echo $(pwd)/nginx-conf):/from --volume ${name_compose}_wsrv_etc:/to alpine cp -rf /from/nginx.conf.ssl /to/nginx.conf.ssl
+docker run --rm -v $(echo $(pwd)/nginx-conf):/from --volume ${name_compose}_wsrv_etc:/to alpine cp -rf /from/nginx.conf.ssl /to/nginx.conf
 docker run --rm -v $(echo $(pwd)/nginx-conf):/from --volume ${name_compose}_wsrv_etc:/to alpine cp -rf /from/site /to/site
 
 docker-compose up -d
