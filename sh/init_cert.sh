@@ -8,9 +8,9 @@ cd $dockerdir
 if [ ! -f .init_cert.env ]; then echo ".init_cert.env not found"; exit 1; fi
 . .init_cert.env
 
-if [ -n $1 ] && [ "$1" = "dr" ]; then dry_run="--dry-run"; fi
+if [ -n "$1" ] && [ "$1" = "dr" ]; then dry_run="--dry-run"; fi
 
-if [ -z $CERT_DNSS ] || [ -z $CERT_EMAIL ]; then
+if [ -z "$CERT_DNSS" ] || [ -z "$CERT_EMAIL" ]; then
   echo "CERT_DNSS and CERT_EMAIL not set"
   exit 2
 fi

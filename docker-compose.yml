@@ -12,7 +12,8 @@ services:
             - MYSQL_PASSWORD
         volumes:
             - mrdb_etc:/etc/mysql/conf.d
-            - base:/var/lib/mysql
+            - mrdb_dat:/var/lib/mysql
+            - mrdb_log:/var/log/mysql
         command: '--default-authentication-plugin=mysql_native_password'
         ports:
             - "127.0.0.1:3306:3306"
@@ -31,7 +32,7 @@ services:
             - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
         volumes:
             - fcgi_etc:/usr/local/etc/php-fpm.d
-            - html:/var/www/html
+            - fcgi_dat:/var/www/html
         networks:
             - bknd-net
     wsrv:
@@ -46,8 +47,8 @@ services:
             - "443:443"
         volumes:
             - wsrv_etc:/etc/nginx/conf.d
-            - html:/var/www/html
-            - cert:/etc/letsencrypt
+            - fcgi_dat:/var/www/html
+            - cert_dat:/etc/letsencrypt
         networks:
             - bknd-net
     cbot:
@@ -57,18 +58,19 @@ services:
         environment:
             - TZ
         volumes:
-            - cert:/etc/letsencrypt
-            - html:/var/lib/letsencrypt
+            - cert_dat:/etc/letsencrypt
+            - fcgi_dat:/var/lib/letsencrypt
         command: --version
         networks:
             - bknd-net
 volumes:
-    base:
-    html:
-    cert:
+    mrdb_dat:
+    fcgi_dat:
+    cert_dat:
     mrdb_etc:
     fcgi_etc:
     wsrv_etc:
+    mrdb_log:
 
 networks:
     bknd-net:
