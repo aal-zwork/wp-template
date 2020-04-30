@@ -5,5 +5,4 @@ dockerdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/.."
 echo $dockerdir
 cd $dockerdir
 
-docker-compose --no-ansi --rm run cbot renew && kill -s SIGHUP wsrv
-docker sysmtem prune -af
+docker-compose --no-ansi run --rm cbot renew && kill -s SIGHUP wsrv
