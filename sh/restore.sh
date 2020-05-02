@@ -8,8 +8,8 @@ cd $dockerdir
 . .env >/dev/null 2>&1
 if [ -n $COMPOSE_PROJECT_NAME ]; then name_compose=$COMPOSE_PROJECT_NAME 
 else name_compose=$(basename $dockerdir); fi
-defbackupdir=$cur_pwd/${name_compose}_backup
 
+defbackupdir=$cur_pwd
 backupdir=${3:-$defbackupdir}
 
 #lastdatt=$(find $backupdir/1* -maxdepth 0 -type d -printf "%f\n" | tail -n 1)

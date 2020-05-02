@@ -1,2 +1,6 @@
-nginx-conf/site/*.conf
-*.env
+/volumes
+/backup
+/tmp
+
+/nginx-conf/site/*.conf
+/*.env
